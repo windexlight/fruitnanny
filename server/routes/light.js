@@ -16,11 +16,11 @@ router.get("/off", (req, res, next) => {
 router.get("/status", (req, res, next) => {
     cp.exec("bin/light.sh status", (err, stdout, stderr) => {
         let status = null;
-        if (stdout.trim() === "1") {
-            status = "on";
+        if (stdout.trim() === "0") {
+            status = "off";
         }
         else {
-            status = "off";
+            status = "on";
         }
         res.json(status);
     });

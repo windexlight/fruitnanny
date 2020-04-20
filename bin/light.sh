@@ -1,17 +1,15 @@
 #!/bin/bash
-light_pin=2
-gpio -g mode $light_pin out
 
 function on {
-	gpio -g write $light_pin 1
+	sudo uhubctl -l 2 -a 1
 }
 
 function off {
-        gpio -g write $light_pin 0
+        sudo uhubctl -l 2 -a 0
 }
 
 function status {
-	gpio -g read $light_pin
+	! sudo uhubctl -l 2 | grep -q power && echo $?
 }
 
 case $1 in  

@@ -33,10 +33,10 @@ router.get("/status", (req: express.Request, res: express.Response, next: expres
     // res.json(sw);
     cp.exec("bin/light.sh status", (err, stdout, stderr) => {
         let status = null;
-        if (stdout.trim() === "1") {
-            status = "on";
-        } else {
+        if (stdout.trim() === "0") {
             status = "off";
+        } else {
+            status = "on";
             }
         res.json(status);
     });
