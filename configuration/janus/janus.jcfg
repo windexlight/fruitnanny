@@ -7,11 +7,11 @@ general: {
   # Configuration files folder
   configs_folder = "/etc/janus"
   # Plugins folder
-  plugins_folder = "/usr/lib/arm-linux-gnueabihf/janus/plugins"
+  plugins_folder = "/usr/local/lib/janus/plugins"
   # Transports folder
-  transports_folder = "/usr/lib/arm-linux-gnueabihf/janus/transports"
+  transports_folder = "/usr/local/lib/janus/transports"
   # Event handlers folder
-  events_folder = "/usr/lib/arm-linux-gnueabihf/janus/events"
+  events_folder = "/usr/local/lib/janus/events"
 
   # The next settings configure logging
   # Whether the Janus output should be written to stdout or not (default=true)
