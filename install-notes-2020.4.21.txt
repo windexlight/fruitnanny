@@ -1,0 +1,41 @@
+To switch off USB bus power: sudo uhubctl -l 2 -a 0
+To turn it back on: sudo uhubctl -l 2 -a 1
+
+Needed to compile github.com/mvp/uhubctl from latest master as of 2020.4.20
+to get this working. Just cloned into a /tmp folder, installed libusb per 
+README.md build instructions, ran make, and sudo make install.
+Uuhubctl package from apt-get was too old to work on Rpi4.
+
+2020.4.21
+For setup, generally followed Fruitnanny blog post from 2017 found at:
+https://ivadim.github.io/2017-08-21-fruitnanny
+Some deviations from the setup instructions there were necessary.
+Those are detailed below as well as I can remember.
+Also tried the docker setup method described more recently in
+the fruitnanny github repo, but did not have any luck getting that
+to work, and debugging docker containers is not my strong suit, so
+switched back to the non-docker installation.
+
+Deviations include:
+The certificate location in the blog post does not match where
+the janus and nginx config files in the latest repo are set to
+look for them. These need to be put in the right spot, or both
+will fail to start. Correct spot as of this writing is:
+/etc/fruitnanny-ssl
+
+Have to run "npm install" in /opt/fruitnanny to pull down
+depedencies. This is not detailed in the blog post, and
+isn't necessarily obvious to anyone who doesn't use nodejs
+every day (like me).
+
+For some reason, the plugins, transports, and events folders
+in janus.jcfg are not correct from the repo. Needed to be
+corrected in my installation to:
+/usr/local/lib/janus/plugins
+/usr/local/lib/janus/transports
+/usr/local/lib/janus/events
+
+This is not so much a problem with the blog post instructions
+as it is a problem with the current state of the repo, and
+may just be a problem with default configuration of my system
+versus configuration of the person working on the repo.
